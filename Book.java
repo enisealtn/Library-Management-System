@@ -6,18 +6,19 @@ public abstract class Book implements Readable{
 	protected String author;
 	protected String library; //What is the purpose of this variable?
 	protected String location;
-	
+	protected String format;
 	public Book() {
 		
 	}
 	
-	public Book(int bookId, String bookName, String author, String library, String location) {
+	/*public Book(int bookId, String bookName, String author, String library, String location, String format) {
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.author = author;
 		this.library = library;
 		this.location = location;
-	}
+		this.format = format;
+	}*/
 	
 	//Getters and setters can be adjusted for the purpose
 	public int getBookId() {
@@ -34,6 +35,9 @@ public abstract class Book implements Readable{
 
 	public String getLocation() {
 		return location;}
+	
+	public String getFormat() {
+		return format;}
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;}
@@ -50,6 +54,9 @@ public abstract class Book implements Readable{
 	public void setLocation(String location) {
 		this.location = location;}
 	
+	public void setFormat(String format) {
+		this.format = format;}
+	
 	public void getInput() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter the book ID = ");
@@ -60,8 +67,6 @@ public abstract class Book implements Readable{
 		author = scan.nextLine();
 		System.out.println("Enter the library name = ");
 		library = scan.nextLine();
-		System.out.println("Enter the location of the book in the library = ");
-		location = scan.nextLine();
 	}
 
 	public abstract void findLocation(String bookName);
@@ -71,5 +76,6 @@ public abstract class Book implements Readable{
 				"\nBook Name = " + bookName +
 				"\nAuthor of the Book = " + author +
 				"\nLibrary Name = " + library + 
-				"\nLocation of the book in the library = " + location;}
+				"\nLocation of the book in the library = " + location + 
+				"\nFormat of the book = " + format;}
 }
