@@ -1,0 +1,16 @@
+Encyclopedia	1111	Encyclopedia of World History	John Smith	None	None	No	None
+Encyclopedia	1112	Encyclopedia of Science and Technology	Emily Johnson	None	None	No	None
+Encyclopedia	1113	Encyclopedia of Philosophy and Ethics	Michael Thompson	None	None	No	None
+Encyclopedia	1114	Encyclopedia of Art and Culture	Sarah Davis	None	None	No	None
+Art Books	2111	Masters of Renaissance: A Journey through Time	Emma Turner	None	None	No	None
+Art Books	2112	Modern Art Movements: Exploring the Avant-Garde	Daniel Martinez	None	None	No	None
+Art Books	2113	The Beauty of Nature: Landscapes and Wildlife in Art	Jessica Adams	None	None	No	None
+Art Books	2114	Portraits and Personalities: A Study in Human Expression	Benjamin Foster	None	None	No	None
+Course Books	3111	Introduction to Psychology: Understanding the Mind	Dr. Rachel Davis	None	None	No	None
+Course Books	3112	Principles of Economics: A Comprehensive Approach	Professor James Anderson	None	None	No	None
+Course Books	3113	Fundamentals of Computer Science: From Algorithms to Programming	Dr. Sophia Lee	None	None	No	None
+Course Books	3114	Anatomy and Physiology: Exploring the Human Body	Dr. Robert Johnson	None	None	No	None
+Dictionaries	4111	English-English Dictionary: Definitions and Meanings	Samuel Thompson	None	None	No	None
+Dictionaries	4112	Spanish-English Dictionary: A Bilingual Reference	Maria Rodriguez	None	None	No	None
+Dictionaries	4113	French-English Dictionary: Essential Vocabulary Guide	Jean-Claude Dupont	None	None	No	None
+Dictionaries	4114	German-English Dictionary: Language Translation Companion	Hans Schmidt	None	None	No	None
