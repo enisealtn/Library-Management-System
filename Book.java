@@ -13,14 +13,15 @@ public abstract class Book implements Readable{
 		
 	}
 	
-	/*public Book(int bookId, String bookName, String author, String library, String location, String format) {
+	public Book(int bookId, String bookName, String author, String location, String format, String isBorrowed, String dateBorrowed) {
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.author = author;
-		this.library = library;
 		this.location = location;
 		this.format = format;
-	}*/
+		this.isBorrowed = isBorrowed;
+		this.dateBorrowed = dateBorrowed;
+	}
 	
 	//Getters and setters can be adjusted for the purpose
 	
