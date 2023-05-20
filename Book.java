@@ -4,9 +4,11 @@ public abstract class Book implements Readable{
 	protected int bookId;
 	protected String bookName;
 	protected String author;
-	protected String library; //What is the purpose of this variable?
+	//protected String library; //What is the purpose of this variable?
 	protected String location;
 	protected String format;
+	protected String isBorrowed;
+	protected String dateBorrowed; //"mm/dd/yyyy"
 	public Book() {
 		
 	}
@@ -21,35 +23,12 @@ public abstract class Book implements Readable{
 	}*/
 	
 	//Getters and setters can be adjusted for the purpose
-	public int getBookId() {
-		return bookId;}
-
-	public String getBookName() {
-		return bookName;}
-
-	public String getAuthor() {
-		return author;}
-
-	public String getLibrary() {
-		return library;}
-
+	
 	public String getLocation() {
 		return location;}
 	
 	public String getFormat() {
 		return format;}
-
-	public void setBookId(int bookId) {
-		this.bookId = bookId;}
-
-	public void setBookName(String bookName) {
-		this.bookName = bookName;}
-
-	public void setAuthor(String author) {
-		this.author = author;}
-
-	public void setLibrary(String library) {
-		this.library = library;}
 
 	public void setLocation(String location) {
 		this.location = location;}
@@ -65,8 +44,8 @@ public abstract class Book implements Readable{
 		bookName = scan.nextLine();
 		System.out.println("Enter the author of the book = ");
 		author = scan.nextLine();
-		System.out.println("Enter the library name = ");
-		library = scan.nextLine();
+		//System.out.println("Enter the library name = ");
+		//library = scan.nextLine();
 	}
 
 	public abstract void findLocation(String bookName);
@@ -75,7 +54,9 @@ public abstract class Book implements Readable{
 		return "\nBook Id = " + bookId +
 				"\nBook Name = " + bookName +
 				"\nAuthor of the Book = " + author +
-				"\nLibrary Name = " + library + 
+				//"\nLibrary Name = " + library + 
 				"\nLocation of the book in the library = " + location + 
-				"\nFormat of the book = " + format;}
+				"\nFormat of the book = " + format + 
+				"\nBorrewed = " + isBorrowed +
+				"\nDate of borrowed = " + dateBorrowed;}
 }
