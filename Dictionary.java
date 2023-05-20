@@ -2,10 +2,16 @@ import java.util.Scanner;
 
 public class Dictionary extends Book{
 	private String language;
-	private int level;
+	private String level;
 	
 	public Dictionary() {
 		
+	}
+	
+	public Dictionary(int bookId, String bookName, String author, String location, String format, String isBorrowed, String dateBorrowed, String language, String level) {
+		super(bookId, bookName, author, location, format, isBorrowed, dateBorrowed);
+		this.language = language;
+		this.level = level;
 	}
 
 	public void getInput() {
@@ -14,7 +20,7 @@ public class Dictionary extends Book{
 		System.out.println("Enter the language = ");
 		language = scan.nextLine();
 		System.out.println("Enter the level of dictionary = ");
-		level = Integer.parseInt(scan.nextLine());
+		level = scan.nextLine();
 	}
 	
 	@Override
@@ -24,7 +30,7 @@ public class Dictionary extends Book{
 
 	@Override
 	public void findLocation(String bookName) {
-		super.setLocation("DIC-"+ bookName.toUpperCase().split("\\s"));		
+		super.setLocation("DIC-"+ bookName.toUpperCase().replace(" ", ""));	
 	}
 	
 	public String toString() {
