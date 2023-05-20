@@ -7,6 +7,12 @@ public class CourseBook extends Book{
 	public CourseBook() {
 		
 	}
+	
+	public CourseBook(int bookId, String bookName, String author, String location, String format, String isBorrowed, String dateBorrowed, String courseName, int edition) {
+		super(bookId, bookName, author, location, format, isBorrowed, dateBorrowed);
+		this.courseName = courseName;
+		this.edition = edition;
+	}
 
 	public void getInput() {
 		Scanner scan = new Scanner(System.in);
@@ -24,7 +30,7 @@ public class CourseBook extends Book{
 
 	@Override
 	public void findLocation(String bookName) {
-		super.setLocation("CRS-"+ bookName.toUpperCase().split("\\s"));		
+		super.setLocation("CRS-"+ bookName.toUpperCase().replace(" ", ""));
 	}
 	
 	public String toString() {
