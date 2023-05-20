@@ -1,11 +1,17 @@
 import java.util.Scanner;
 
-public class Enclopedia extends Book{
+public class Encyclopedia extends Book{
 	private String subject;
 	private int volume;
 	
-	public Enclopedia() {
+	public Encyclopedia() {
 		
+	}
+	
+	public Encyclopedia(int bookId, String bookName, String author, String location, String format, String isBorrowed, String dateBorrowed, String subject, int volume) {
+		super(bookId, bookName, author, location, format, isBorrowed, dateBorrowed);
+		this.subject = subject;
+		this.volume = volume;
 	}
 	
 	public void getInput() {
@@ -24,7 +30,7 @@ public class Enclopedia extends Book{
 
 	@Override
 	public void findLocation(String bookName) {
-		super.setLocation("ENC-"+ bookName.toUpperCase().split("\\s"));
+		super.setLocation("ENC-"+ bookName.toUpperCase().replace(" ", ""));
 	}
 	
 	public String toString() {
