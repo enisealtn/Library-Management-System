@@ -8,9 +8,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Borrower {
 	private int borrowerId;
-	private String borrowerType;
-	private ArrayList<Book> keptBook = new ArrayList<Book>();
+	private String borrowerName;
+	//private ArrayList<Book> keptBook = new ArrayList<Book>();
+	private ArrayList<Integer> keptBook;
 	
+	public Borrower(int borrowerId, String borrowerName, ArrayList<Integer> keptBook) {
+		this.borrowerId = borrowerId;
+		this.borrowerName = borrowerName;
+		this.keptBook = keptBook;
+	}
 	
 	public int isOverdue(Book bk) {
 		int daysDifference = 0;
@@ -33,9 +39,9 @@ public class Borrower {
 	
 	public String display() {
 		String str =  "\nBorrower Id = " + borrowerId + 
-				"\nBorrower Type = " + borrowerType + "\nBorrowed Books = ";
-		for (Book bk: keptBook) {
-			str += "\n" + bk.toString();
+				"\nBorrower Type = " + borrowerName + "\nBorrowed Books = ";
+		for (Integer bk: keptBook) {
+			str += "\n" + bk;
 		}
 		return str;
 	}
