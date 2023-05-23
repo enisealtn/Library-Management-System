@@ -1,4 +1,5 @@
 //Update UML: add the methods readBooksTxt, readBorrowersTxt; update the remove method from void to boolean
+//Complete the CalculateFee method - how do we calculate?
 
 import java.io.File;
 import java.io.FileNotFoundException;
