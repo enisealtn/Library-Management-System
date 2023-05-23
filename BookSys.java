@@ -1,3 +1,5 @@
+//Update UML: add the methods readBooksTxt, readBorrowersTxt; update the remove method from void to boolean
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
