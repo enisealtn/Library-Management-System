@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookSys {
-	public ArrayList<Book> books = new ArrayList<Book>();
-	public ArrayList<Borrower> borrowers = new ArrayList<Borrower>();
+	public static ArrayList<Book> books = new ArrayList<Book>();
+	public static ArrayList<Borrower> borrowers = new ArrayList<Borrower>();
 	
 	public void readBooksTxt(String fileName) {
 		File file = new File(fileName);
@@ -90,7 +90,7 @@ public class BookSys {
 		}
 	}
 	
-	public Book searchBook(String bookName) {
+	public static Book searchBook(String bookName) {
 		Book searchedBook = null;
 		for (Book book:books) {
 			if (book.bookName.equalsIgnoreCase(bookName))
@@ -99,7 +99,7 @@ public class BookSys {
 		return searchedBook;
 	}
 	
-	public void addBook() {
+	public static void addBook() {
 		int numBook;
 		String type;
 		Book addedBook;
@@ -139,7 +139,7 @@ public class BookSys {
 		}
 	}
 	
-	public void display() {
+	public static void display() {
 		for (Book bk: books) {
 			if (bk instanceof Encyclopedia)
 				System.out.println("\n"+((Encyclopedia)bk).toString());
