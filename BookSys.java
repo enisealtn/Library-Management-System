@@ -139,6 +139,18 @@ public class BookSys {
 		}
 	}
 	
+	public static boolean remove (String bookName){
+		boolean removed = false;
+		for (int i = 0; i < books.size(); i++) {
+		    if (books.get(i).getBookName().equalsIgnoreCase(bookName)) {
+			books.remove(i);
+			removed = true;
+			break;
+		    }
+		}
+		return removed;
+	}
+	
 	public static void display() {
 		for (Book bk: books) {
 			if (bk instanceof Encyclopedia)
@@ -150,5 +162,9 @@ public class BookSys {
 			else
 				System.out.println("\n"+((Dictionary)bk).toString());
 		}
+	}
+	
+	public static double calculateFee(int bookId){
+		
 	}
 }
