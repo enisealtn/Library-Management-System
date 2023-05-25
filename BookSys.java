@@ -168,6 +168,13 @@ public class BookSys {
 	}
 	
 	public static double calculateFee(int bookId){
-		
+		Borrower bw=new Borrower();
+		if(bw.isOverdue()<5){
+			return bw.isOverdue()*2.0;
+		} else if(bw.isOverdue()<10){
+			return bw.isOverdue()*3.0;
+		} else{
+			return bw.isOverdue()*4.0;
+		}
 	}
 }
