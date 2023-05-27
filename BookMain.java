@@ -1,104 +1,43 @@
 import java.util.Scanner;
 
-public abstract class Book implements Readable {
-    protected int bookId;
-    protected String bookName;
-    protected String author;
-    protected String location;
-    protected String format;
-    protected String isBorrowed;
-    protected String dateBorrowed; //"mm/dd/yyyy"
+public class BookMain {
 
-    public Book() {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String answer, bookName;
+		/*Borrower br = new Borrower();
+		CourseBook bk = new CourseBook();
+		bk.dateBorrowed = "05/18/2023";
+		
+		int days = br.isOverdue(bk);*/
+		BookSys.readBooksTxt("book_names.txt");
+		System.out.println("ok");
+		BookSys.readBorrowersTxt("borrowers.txt");
+		System.out.println("ok2");
+		
+		BookSys.addBook();
+		
+		System.out.print("Do you want to remove a book: ");
+		answer = scanner.nextLine();
+		if(answer.equalsIgnoreCase("yes")) {
+			System.out.print("Enter the name of the book: ");
+			bookName = scanner.nextLine();
+			BookSys.remove(bookName);
+		}
+		
+		System.out.print("Do you want to search a book: ");
+		answer = scanner.nextLine();
+		if(answer.equalsIgnoreCase("yes")) {
+			System.out.print("Enter the name of the book: ");
+			bookName = scanner.nextLine();
+			if(bookName != null) {
+				System.out.println("Here is the information of the book you searched:");
+				System.out.println(BookSys.searchBook(bookName));
+			}
+			
+		}
+		BookSys.borrowOrReturn();
+		BookSys.display();
+	}
 
-    }
-
-    public Book(int bookId, String bookName, String author, String location, String format, String isBorrowed, String dateBorrowed) {
-        this.bookId = bookId;
-        this.bookName = bookName;
-        this.author = author;
-        this.location = location;
-        this.format = format;
-        this.isBorrowed = isBorrowed;
-        this.dateBorrowed = dateBorrowed;
-    }
-
-    // Getters and setters
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
-    public String getIsBorrowed() {
-        return isBorrowed;
-    }
-
-    public void setIsBorrowed(String isBorrowed) {
-        this.isBorrowed = isBorrowed;
-    }
-
-    public String getDateBorrowed() {
-        return dateBorrowed;
-    }
-
-    public void setDateBorrowed(String dateBorrowed) {
-        this.dateBorrowed = dateBorrowed;
-    }
-
-    public void getInput() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the book ID = ");
-        bookId = Integer.parseInt(scan.nextLine());
-        System.out.print("Enter the book name = ");
-        bookName = scan.nextLine();
-        System.out.print("Enter the author of the book = ");
-        author = scan.nextLine();
-    }
-
-    public abstract void findLocation(String bookName);
-
-    public String toString() {
-        return "\nBook Id = " + bookId +
-                "\nBook Name = " + bookName +
-                "\nAuthor of the Book = " + author +
-                "\nLocation of the book in the library = " + location +
-                "\nFormat of the book = " + format +
-                "\nBorrowed = " + isBorrowed +
-                "\nDate of borrowed = " + dateBorrowed;
-    }
 }
