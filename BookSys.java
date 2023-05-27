@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class BookSys {
 	public static ArrayList<Book> books = new ArrayList<Book>();
 	public static ArrayList<Borrower> borrowers = new ArrayList<Borrower>();
+	//public static ArrayList<Book> keptBooks = new ArrayList<Book>(); // Updated variable declaration
 	
-	public void readBooksTxt(String fileName) {
+	public static void readBooksTxt(String fileName) {
 		File file = new File(fileName);
 		Scanner scan;
 		String bookType, bookName, bookAuthor, location, format, isBorrowed, dateBorrowed;
@@ -68,30 +69,47 @@ public class BookSys {
 		}
 	}
 	
-	public void readBorrowersTxt(String fileName) {
-		File file = new File(fileName);
-		Scanner scan;
-		String borrowerName;
-		int borrowerId;
-		ArrayList<Integer> keptBooks = new ArrayList<Integer>();
-		String[] borrowerAll;
-		Borrower borrower;
-		try {
-			scan = new Scanner(file);
-			while (scan.hasNext()) {
-				borrowerAll = scan.nextLine().split("\t");
-				borrowerId = Integer.parseInt(borrowerAll[0]);
-				borrowerName = borrowerAll[1];
-				for (int i=2;i<borrowerAll.length; i++) {
-					keptBooks.add(Integer.parseInt(borrowerAll[i]));
-				}
-				borrower = new Borrower(borrowerId, borrowerName, keptBooks);
-				borrowers.add(borrower);
-			}
-		}catch (FileNotFoundException e) {
-			System.out.println(e);
-		}
+	public static void readBorrowersTxt(String fileName) {
+	    File file = new File(fileName);
+	    Scanner scan;
+	    String borrowerName;
+	    int borrowerId;
+	    String[] borrowerAll;
+	    Borrower borrower;
+	    try {
+	        scan = new Scanner(file);
+	        while (scan.hasNext()) {
+	            borrowerAll = scan.nextLine().split("\t");
+	            borrowerId = Integer.parseInt(borrowerAll[0]);
+	            borrowerName = borrowerAll[1];
+	            
+	            ArrayList<Book> keptBooks = new ArrayList<Book>(); // Create a new ArrayList for each borrower
+	            
+	            for (int i = 2; i < borrowerAll.length; i++) {
+	                int bookId = Integer.parseInt(borrowerAll[i]);
+	                Book book = searchBookById(bookId);
+	                if (book != null) {
+	                    keptBooks.add(book);
+	                }
+	            }
+	            
+	            borrower = new Borrower(borrowerId, borrowerName, keptBooks);
+	            borrowers.add(borrower);
+	        }
+	    } catch (FileNotFoundException e) {
+	        System.out.println(e);
+	    }
 	}
+
+	
+	private static Book searchBookById(int bookId) {
+        for (Book book : books) {
+            if (book.getBookId() == bookId) {
+                return book;
+            }
+        }
+        return null;
+    }
 	
 	public static Book searchBook(String bookName) {
 		Book searchedBook = null;
@@ -107,24 +125,25 @@ public class BookSys {
 		String type;
 		Book addedBook;
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter the number of book you want to add = ");
+		System.out.print("\nEnter the number of book you want to add = ");
 		numBook = Integer.parseInt(scanner.nextLine());
 		for (int i=0; i<numBook; i++) {
-			System.out.println("Enter the type of the book you wan to add (Encyclopedia, ArtBook, CourseBook, Dictionary) = ");
+			System.out.print("Enter the type of the book you wan to add ('E' for Encyclopedia, 'A' for ArtBook, 'C' for CourseBook, 'D' for Dictionary) = ");
 			type = scanner.nextLine();
-			if (type.equalsIgnoreCase("Encyclopedia")) {
+			if (type.equalsIgnoreCase("E")) {
 				addedBook = new Encyclopedia();
 				((Encyclopedia)addedBook).getInput();
 				((Encyclopedia)addedBook).read();
 				((Encyclopedia)addedBook).findLocation(addedBook.bookName);
+				((Encyclopedia)addedBook).setIsBorrowed("No");
 			}
-			else if (type.equalsIgnoreCase("ArtBook")) {
+			else if (type.equalsIgnoreCase("A")) {
 				addedBook = new ArtBook();
 				((ArtBook)addedBook).getInput();
 				((ArtBook)addedBook).read();
 				((ArtBook)addedBook).findLocation(addedBook.bookName);
 			}
-			else if (type.equalsIgnoreCase("CourseBook")) {
+			else if (type.equalsIgnoreCase("C")) {
 				addedBook = new CourseBook();
 				((CourseBook)addedBook).getInput();
 				((CourseBook)addedBook).read();
@@ -151,6 +170,7 @@ public class BookSys {
 			break;
 		    }
 		}
+		System.out.println("The book is removed from the available list!");
 		return removed;
 	}
 	
@@ -167,14 +187,131 @@ public class BookSys {
 		}
 	}
 	
-	public static double calculateFee(int bookId){
-		Borrower bw=new Borrower();
-		if(bw.isOverdue()<5){
-			return bw.isOverdue()*2.0;
-		} else if(bw.isOverdue()<10){
-			return bw.isOverdue()*3.0;
-		} else{
-			return bw.isOverdue()*4.0;
+	public static void displayBorrowers() {
+		for (Borrower borrower: borrowers) {
+			System.out.println(borrower);
 		}
 	}
+	
+	public static double calculateFee(String bookName){
+		Borrower bw=new Borrower();
+		if(bw.isOverdue(searchBook(bookName))<5){
+			return 0;
+		} else if(bw.isOverdue(searchBook(bookName))<10){
+			return bw.isOverdue(searchBook(bookName))*2.0;
+		} else{
+			return bw.isOverdue(searchBook(bookName))*3.0;
+		}
+	}
+	
+	public static void borrowOrReturn() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Do you want to borrow or return a book? (Borrow/Return): ");
+        String option = scanner.nextLine();
+        if (option.equalsIgnoreCase("Borrow")) {
+            System.out.print("Are you enrolled? (Yes/No): ");
+            String enrolledOption = scanner.nextLine();
+            if (enrolledOption.equalsIgnoreCase("Yes")) {
+                // Borrower is enrolled
+                System.out.print("Enter your borrower ID: ");
+                int borrowerId = Integer.parseInt(scanner.nextLine());
+                Borrower borrower = findBorrowerById(borrowerId);
+                if (borrower != null) {
+                    System.out.print("Enter the name of the book you want to borrow: ");
+                    String bookName = scanner.nextLine();
+                    Book book = searchBook(bookName);
+                    if (book != null) {
+                        if (book.getIsBorrowed().equalsIgnoreCase("no")) {
+                            borrower.borrowBook(book);
+                            System.out.println("Book borrowed successfully.");
+                        } else {
+                            System.out.println("Sorry, the book is already borrowed.");
+                        }
+                    } else {
+                        System.out.println("Book not found.");
+                    }
+                } else {
+                    System.out.println("Borrower not found.");
+                }
+            } else {
+                // Borrower is not enrolled
+                enrollBorrower();
+                System.out.print("Enter your borrower ID: ");
+                int borrowerId = Integer.parseInt(scanner.nextLine());
+                Borrower borrower = findBorrowerById(borrowerId);
+                if (borrower != null) {
+                    System.out.print("Enter the name of the book you want to borrow: ");
+                    String bookName = scanner.nextLine();
+                    Book book = searchBook(bookName);
+                    if (book != null) {
+                        if (book.getIsBorrowed().equalsIgnoreCase("no")) {
+                            borrower.borrowBook(book);
+                            System.out.println("Book borrowed successfully.");
+                        } else {
+                            System.out.println("Sorry, the book is already borrowed.");
+                        }
+                    } else {
+                        System.out.println("Book not found.");
+                    }
+                } else {
+                    System.out.println("Borrower not found.");
+                }
+            }
+        } else if (option.equalsIgnoreCase("Return")) {
+            System.out.print("Enter your borrower ID: ");
+            int borrowerId = Integer.parseInt(scanner.nextLine());
+            Borrower borrower = findBorrowerById(borrowerId);
+            if (borrower != null) {
+                System.out.print("Enter the name of the book you want to return: ");
+                String bookName = scanner.nextLine();
+                boolean returned = borrower.returnBook(bookName);
+                if (returned) {
+                    System.out.println("Book returned successfully.");
+                } else {
+                    System.out.println("You do not have the specified book borrowed.");
+                }
+            } else {
+                System.out.println("Borrower not found.");
+            }
+        } else {
+            System.out.println("Invalid option.");
+        }
+    }
+	
+	
+	
+	private static Borrower findBorrowerById(int borrowerId) {
+        for (Borrower borrower : borrowers) {
+            if (borrower.getBorrowerId() == borrowerId) {
+                return borrower;
+            }
+        }
+        return null;
+    }
+
+    private static void enrollBorrower() {
+        Scanner scanner = new Scanner(System.in);
+        int borrowerId = generateBorrowerId();
+        System.out.print("Enter your name: ");
+        String borrowerName = scanner.nextLine();
+        Borrower borrower = new Borrower(borrowerId, borrowerName);
+        borrowers.add(borrower);
+        System.out.println("Borrower enrolled successfully.");
+        System.out.println("Your id is:" + borrowerId);
+    }
+	
+	private static int generateBorrowerId() {
+        int maxId = 103;
+        for (Borrower borrower : borrowers) {
+            if (borrower.getBorrowerId() > maxId) {
+                maxId = borrower.getBorrowerId();
+            }
+        }
+        return maxId + 1;
+    }
+	
+
 }
+
+
+
