@@ -1,16 +1,16 @@
-Encyclopedia	1111	Encyclopedia of World History	John Smith	None	None	No	None	History	1
-Encyclopedia	1112	Encyclopedia of Science and Technology	Emily Johnson	None	None	No	None	Science	2
-Encyclopedia	1113	Encyclopedia of Philosophy and Ethics	Michael Thompson	None	None	No	None	Philosophy	3
-Encyclopedia	1114	Encyclopedia of Art and Culture	Sarah Davis	None	None	No	None	Art	4
-Art Books	2111	Masters of Renaissance: A Journey through Time	Emma Turner	None	None	No	None	Renaissance Art	true
-Art Books	2112	Modern Art Movements: Exploring the Avant-Garde	Daniel Martinez	None	None	No	None	Modern Art	false
-Art Books	2113	The Beauty of Nature: Landscapes and Wildlife in Art	Jessica Adams	None	None	No	None	Landscape Art	true
-Art Books	2114	Portraits and Personalities: A Study in Human Expression	Benjamin Foster	None	None	No	None	Figurative Art	false
-Course Books	3111	Introduction to Psychology: Understanding the Mind	Dr. Rachel Davis	None	None	No	None	Introduction to Psychology: Understanding the Mind	5
-Course Books	3112	Principles of Economics: A Comprehensive Approach	Professor James Anderson	None	None	No	None	Principles of Economics: A Comprehensive Approach	3
-Course Books	3113	Fundamentals of Computer Science: From Algorithms to Programming	Dr. Sophia Lee	None	None	No	None	Fundamentals of Computer Science: From Algorithms to Programming	2
-Course Books	3114	Anatomy and Physiology: Exploring the Human Body	Dr. Robert Johnson	None	None	No	None	Anatomy and Physiology: Exploring the Human Body	4
-Dictionaries	4111	English-English Dictionary: Definitions and Meanings	Samuel Thompson	None	None	No	None	English-English	All Levels
-Dictionaries	4112	Spanish-English Dictionary: A Bilingual Reference	Maria Rodriguez	None	None	No	None	Spanish-English	Intermediate
-Dictionaries	4113	French-English Dictionary: Essential Vocabulary Guide	Jean-Claude Dupont	None	None	No	None	French-English	All Levels
-Dictionaries	4114	German-English Dictionary: Language Translation Companion	Hans Schmidt	None	None	No	None	German-English	Beginner
+Encyclopedia	1111	Encyclopedia of World History	John Smith	None	Printed	No	None	History	1
+Encyclopedia	1112	Encyclopedia of Science and Technology	Emily Johnson	None	Printed	No	None	Science	2
+Encyclopedia	1113	Encyclopedia of Philosophy and Ethics	Michael Thompson	None	Printed	No	None	Philosophy	3
+Encyclopedia	1114	Encyclopedia of Art and Culture	Sarah Davis	None	mp3	No	None	Art	4
+Art Books	2111	Masters of Renaissance: A Journey through Time	Emma Turner	None	Printed	No	None	Renaissance Art	true
+Art Books	2112	Modern Art Movements: Exploring the Avant-Garde	Daniel Martinez	None	mp3	No	None	Modern Art	false
+Art Books	2113	The Beauty of Nature: Landscapes and Wildlife in Art	Jessica Adams	None	Printed	No	None	Landscape Art	true
+Art Books	2114	Portraits and Personalities: A Study in Human Expression	Benjamin Foster	None	mp3	No	None	Figurative Art	false
+Course Books	3111	Introduction to Psychology: Understanding the Mind	Dr. Rachel Davis	None	Printed	No	None	Introduction to Psychology: Understanding the Mind	5
+Course Books	3112	Principles of Economics: A Comprehensive Approach	Professor James Anderson	None	Printed	No	None	Principles of Economics: A Comprehensive Approach	3
+Course Books	3113	Fundamentals of Computer Science: From Algorithms to Programming	Dr. Sophia Lee	None	Printed	No	None	Fundamentals of Computer Science: From Algorithms to Programming	2
+Course Books	3114	Anatomy and Physiology: Exploring the Human Body	Dr. Robert Johnson	None	mp3	No	None	Anatomy and Physiology: Exploring the Human Body	4
+Dictionaries	4111	English-English Dictionary: Definitions and Meanings	Samuel Thompson	None	Printed	No	None	English-English	All Levels
+Dictionaries	4112	Spanish-English Dictionary: A Bilingual Reference	Maria Rodriguez	None	Printed	No	None	Spanish-English	Intermediate
+Dictionaries	4113	French-English Dictionary: Essential Vocabulary Guide	Jean-Claude Dupont	None	Printed	No	None	French-English	All Levels
+Dictionaries	4114	German-English Dictionary: Language Translation Companion	Hans Schmidt	None	Printed	No	None	German-English	Beginner
